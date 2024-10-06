@@ -1,6 +1,6 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema({
+const userSchema =  Schema({
   name: { type: String, required: true, trim: true },
   passwordHash: { type: String, required: true, trim: true },
   email: { type: String, required: true, trim: true },
@@ -11,7 +11,7 @@ const userSchema = new Schema({
   country: String,
   phone: { type: String, required: true, trim: true },
   resetPasswordOtp: Number,
-  resetPasswordOtpExpiration: { type: Date, required: true, trim: true },
+  resetPasswordOtpExpiration: Date,
   isAdmin: { type: Boolean, default: false },
 
   wishList: [
@@ -32,6 +32,6 @@ const userSchema = new Schema({
 });
 
 userSchema.index({ email: 1 }, { unique: true });
-exports.User = model("User", userSchema);
+exports.User = model('User', userSchema);
 
-module.exports = userSchema;
+

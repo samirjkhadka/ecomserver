@@ -5,13 +5,13 @@ const authController = require("../controllers/auth");
 const { body } = require("express-validator");
 const validateUser = [
   body("name").not().isEmpty().withMessage("Name is required"),
-  body("email").isEmail().withMessage("Email is required"),
+  body("email").isEmail().withMessage("Email is invalid"),
   body("password")
     .isLength({ min: 8 })
     .withMessage("Password must be at least 8 characters long")
     .isStrongPassword()
     .withMessage("Password must be strong"),
-  body("phone").isMobilePhone().withMessage("Phone number is required"),
+  body("phone").isMobilePhone().withMessage("Phone number is invalid"),
 ];
 
 router.post("/login", authController.login);
