@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const userSchema =  Schema({
+const userSchema = Schema({
   name: { type: String, required: true, trim: true },
   passwordHash: { type: String, required: true, trim: true },
   email: { type: String, required: true, trim: true },
@@ -32,6 +32,4 @@ const userSchema =  Schema({
 });
 
 userSchema.index({ email: 1 }, { unique: true });
-exports.User = model('User', userSchema);
-
-
+exports.User = model("User", userSchema);
